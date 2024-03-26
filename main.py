@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from discord import app_commands
 
 load_dotenv()
-TOKEN: Final[str] = os.getenv('TOKEN')
+TOKEN: Final[str] = os.getenv('BOT_TOKEN')
 
 #инициализация бота должна находиться в глоабльной области видимости,
 #так как из main обьект класса Client никто не увидит
@@ -38,8 +38,8 @@ async def send(message: Message) -> None:
     if message.author == client.user:
         return
     
-    if(message.content == "Серега займи денег"):
-        await message.channel.send("Пошел нахуй!")
+    if(message.content == "Пошел нахуй!"):
+        await message.channel.send("NO")
 
 # Eto todge tochka vhoda
 if __name__ == "__main__":
