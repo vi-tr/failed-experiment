@@ -68,8 +68,7 @@ async def vote(client: discord.Client,
         while sum(votes) < count:
             add, remove = asyncio.create_task(client.wait_for('reaction_add')), asyncio.create_task(client.wait_for('reaction_remove'))
             first = (await asyncio.wait([add, remove], return_when=asyncio.FIRST_COMPLETED, timeout=endtime-time.time()))[0].pop()
-            try: idx = symbol_set.index(str(first.result()[0].emoji))
-            except ValueError: continue
+            idx = symbol_set.index(str(first.result()[0].emoji))
             if first is add: remove.cancel(); votes[idx]+=1
             else:            add.cancel();    votes[idx]-=1
             for i in range(len(options)):
