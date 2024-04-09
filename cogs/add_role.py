@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
 # from create_role import create_role
-from discord import Permissions, Client, TextChannel, VoiceChannel, StageChannel, Colour, Role
+from discord import Permissions, TextChannel, VoiceChannel, StageChannel
+from vote import *
 
 class CustomRole():
     def __init__(self):
@@ -27,11 +28,11 @@ class CustomRole():
         return self.perm_dict[role_type]
 
 
-class RoleManipulation(commands.Cog):
+class AddRole(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name='add_role_poll')
+    @commands.command(name='add_role')
     async def create_role(
             self,
             ctx: TextChannel | VoiceChannel | StageChannel,
@@ -59,10 +60,14 @@ class RoleManipulation(commands.Cog):
                 permissions=role_type
                 )
                 await role
-                await ctx.reply("Роль была создана!")
+
+                phrases = ["Роль успешно создана!", "Гойлосование провалилось.", "Похоже, ваша роль никому нахуй не всралась :( Хватит созывать парламент на обсуждение каждого пука!!!"]
+                
+                choice = await vote(self.bot, ctx, f"Создаем роль {role_name}?", ["Да", "Нет", "Пизда"], symbols='letters',importance=Importance.medium)
+                await ctx.reply(phrases[choice.pop()])
                 
         except:
             await ctx.reply("Вероятно, параметры комманды /add_role были введены в неверном порядке. Попробуйте снова.")
 
 async def setup(bot):
-    await bot.add_cog(RoleManipulation(bot))
+    await bot.add_cog(AddRole(bot))
