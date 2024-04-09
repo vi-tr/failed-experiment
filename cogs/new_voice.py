@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from vote import vote, Importance
 
-class Fuckyou(commands.Cog):
+class Voice(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -29,5 +29,5 @@ class Fuckyou(commands.Cog):
         
 
 async def setup(bot):
-    await bot.add_cog(Fuckyou(bot))
+    await bot.add_cog(Voice(bot))
 
