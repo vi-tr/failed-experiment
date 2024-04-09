@@ -4,6 +4,8 @@ from discord.ext import commands
 from typing import Final
 import os
 import asyncio
+import dotenv
+
 
 
 # Токен передаем через .env файл, если хотите его узнать, пишите мне, Антону или Вите
@@ -20,7 +22,6 @@ INTENTS: Final[discord.Intents] = discord.Intents(
     typing=False,
     presences=False,
     voice_states=True,
-
 )
 bot = commands.Bot(command_prefix="/", intents=INTENTS)
 
@@ -36,5 +37,5 @@ async def main():
         await load_extensions()
         await bot.start(TOKEN)
 
-if __name__ == "__main__": asyncio.run(main())
 
+if __name__ == "__main__": asyncio.run(main())
