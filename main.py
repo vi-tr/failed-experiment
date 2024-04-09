@@ -6,7 +6,6 @@ import os
 import asyncio
 import dotenv
 
-
 dotenv.load_dotenv()
 # Токен передаем через .env файл, если хотите его узнать, пишите мне, Антону или Вите
 TOKEN: Final[str|None] = os.getenv('BOT_TOKEN')
@@ -19,10 +18,8 @@ INTENTS: Final[discord.Intents] = discord.Intents(
     messages=True,
     members=True,
     guild_reactions=True,
-    guilds=True,
     typing=False,
     presences=False,
-    voice_states=True,
 )
 bot = commands.Bot(command_prefix="/", intents=INTENTS)
 
