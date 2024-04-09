@@ -18,10 +18,6 @@ lib/
 lib64/
 parts/
 sdist/
-<<<<<<< HEAD
-=======
-.venv/
->>>>>>> d8e3b4523f0d1afa93fd4edf1e0f1ba5a7a9c452
 var/
 wheels/
 share/python-wheels/
@@ -135,8 +131,4 @@ dmypy.json
 .pytype/
 
 # Cython debug symbols
-<<<<<<< HEAD
 cython_debug/
-=======
-cython_debug/
->>>>>>> d8e3b4523f0d1afa93fd4edf1e0f1ba5a7a9c452

@@ -39,10 +39,6 @@ async def vote(client: discord.Client,
 
     endtime = time.time() + (importance.timeout() if timeout is None else timeout)
     count = max(1, int(len(ctx.guild.members) * (importance.count() if count is None else count))) # Floor, not round
-<<<<<<< HEAD
-=======
-    print(count, len(ctx.guild.members))
->>>>>>> d8e3b4523f0d1afa93fd4edf1e0f1ba5a7a9c452
 
     embed = discord.Embed(title=title,
         description=f"{desc or ''}\nГолосование будет окончено автоматически в {datetime.fromtimestamp(endtime).strftime('%Y-%m-%d %H:%M:%S')}, либо когда проголосуют {count} человек(а).",
