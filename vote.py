@@ -79,3 +79,4 @@ async def vote(client: discord.Client,
         _logger.info(f"Vote {msg.id} finished successfully")
     except asyncio.TimeoutError: _logger.info(f"Vote {msg.id} timed out")
     return result
+

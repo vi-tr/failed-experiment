@@ -5,9 +5,11 @@ from typing import Final
 import os
 import asyncio
 
+
 # Токен передаем через .env файл, если хотите его узнать, пишите мне, Антону или Вите
 TOKEN: Final[str|None] = os.getenv('BOT_TOKEN')
 assert TOKEN is not None, "Токен не найден, проверьте что переменная окружения $BOT_TOKEN содержит токен"
+
 
 INTENTS: Final[discord.Intents] = discord.Intents(
     message_content=True, # TODO: App/hybrid commands since apparently no one else can figure them out
@@ -17,6 +19,8 @@ INTENTS: Final[discord.Intents] = discord.Intents(
     guilds=True,
     typing=False,
     presences=False,
+    voice_states=True,
+
 )
 bot = commands.Bot(command_prefix="/", intents=INTENTS)
 
@@ -34,4 +38,3 @@ async def main():
 
 if __name__ == "__main__": asyncio.run(main())
 
-# PS Писать свои функции, нужно в отдельных файлах в папке cogs 
