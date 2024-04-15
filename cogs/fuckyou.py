@@ -1,3 +1,4 @@
+from vote import vote, Importance
 import discord
 from discord.ext import commands
 
@@ -13,6 +14,13 @@ class Fuckyou(commands.Cog):
     @commands.command(name='lend_money')
     async def fuckyou(self, ctx):
         await ctx.send("ПОШЕЛ НАХУЙ!")    
+    @commands.command(name='poll')
+    async def important_poll(self, ctx):
+        choice = await vote(self.bot, ctx, "Что лучше?", ["Вариант А", "Вариант Б"], importance=Importance.minor)
+        if choice.pop()==0: await ctx.send("Вы реально выбрали А?")
+        else: await ctx.send("Вы реально выбрали Б?")
+        choice = await vote(self.bot, ctx, "Что РЕАЛЬНО лучше?", ["Вариант А", "Вариант Б", "Вариант В (секрет)"], symbols='letters', importance=Importance.minor)
+        await ctx.send("Дауж....")
 
 # Вот эту хрень нужно пистаь обязательно 
 # На самом деле ничего сложного тут  нет
