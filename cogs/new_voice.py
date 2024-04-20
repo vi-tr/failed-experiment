@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from vote import vote, Importance
 
+
 class Voice(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -19,7 +20,6 @@ class Voice(commands.Cog):
         if choice.pop()==1:
             await ctx.send("Голосование провалилось")
             return
-        
         if category is None:
             category = await guild.create_category(category_name)
             await ctx.send(f"Категория '{category_name}' создана.")
@@ -30,4 +30,3 @@ class Voice(commands.Cog):
 
 async def setup(bot):
     await bot.add_cog(Voice(bot))
-
