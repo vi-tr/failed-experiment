@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 from vote import vote, Importance
 
-class Fuckyou(commands.Cog):
+
+class Voice(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -19,15 +20,13 @@ class Fuckyou(commands.Cog):
         if choice.pop()==1:
             await ctx.send("Голосование провалилось")
             return
-        else:     
-            if category is None:
-                category = await guild.create_category(category_name)
-                await ctx.send(f"Категория '{category_name}' создана.")
+        if category is None:
+            category = await guild.create_category(category_name)
+            await ctx.send(f"Категория '{category_name}' создана.")
         
-            await guild.create_voice_channel(channel_name, category=category)
-            await ctx.send(f"Голосовой канал '{channel_name}' успешно создан в категории '{category_name}'!")
+        await guild.create_voice_channel(channel_name, category=category)
+        await ctx.send(f"Голосовой канал '{channel_name}' успешно создан в категории '{category_name}'!")
         
 
 async def setup(bot):
-    await bot.add_cog(Fuckyou(bot))
-
+    await bot.add_cog(Voice(bot))
