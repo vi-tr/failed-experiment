@@ -4,6 +4,8 @@ from discord.ext import commands
 from typing import Final
 import os
 import asyncio
+import dotenv
+
 
 
 # Токен передаем через .env файл, если хотите его узнать, пишите мне, Антону или Вите
